@@ -6,29 +6,21 @@ import { CounterState } from '../state/counter.state';
 @Component({
   selector: 'app-counter-buttons',
   templateUrl: './counter-buttons.component.html',
-  styleUrls: ['./counter-buttons.component.scss']
+  styleUrls: ['./counter-buttons.component.scss'],
 })
 export class CounterButtonsComponent implements OnInit {
-  // @Output() increment = new EventEmitter<void>();  // without ngrx
-  // @Output() decrement = new EventEmitter<void>();// without ngrx
-  // @Output() reset = new EventEmitter<void>();// without ngrx
+  constructor(private store: Store<{ counter: CounterState }>) {}
 
-  constructor( private store: Store<{counter:CounterState}>) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  onIncrement() {
+    this.store.dispatch(increment());
+  }
+  onDecrement() {
+    this.store.dispatch(decrement());
   }
 
-  onIncrement(){
-// this.increment.emit()
-this.store.dispatch(increment());
-  }
-  onDecrement(){
-  // this.decrement.emit()
-  this.store.dispatch(decrement());
-  }
-
-  onReset(){
-// this.reset.emit()
-this.store.dispatch(reset());
+  onReset() {
+    this.store.dispatch(reset());
   }
 }

@@ -5,3 +5,5 @@ export const decrement = createAction('decrement');
 export const reset = createAction('reset');
 
 export const  customIncrement = createAction('customincrement',props<{count:number}>());
+
+export const changeChanelName = createAction('changeChanelName');

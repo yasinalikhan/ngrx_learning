@@ -15,6 +15,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { appReducer } from './store/app.store';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { environment } from 'src/environments/environment';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    StoreModule.forRoot({counter:counterReducer}),
+    StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
      // Instrumentation must be imported after importing StoreModule (config is optional)
      StoreDevtoolsModule.instrument({

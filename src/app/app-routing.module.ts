@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter/counter.component';
-import { PostListComponent } from './posts/post-list/post-list.component';
-import { AddpostComponent } from './posts/addpost/addpost.component';
+
 
 const routes: Routes = [
   {
@@ -16,14 +14,11 @@ const routes: Routes = [
   },
   {
     path:'counter',
-    component:CounterComponent
+    loadChildren:()=>import('./counter/counter.module').then((m)=>m.CounterModule)
   },
   {
     path:'posts',
-    component:PostListComponent,
-    children: [
-      {path:'add',component:AddpostComponent}
-    ]
+    loadChildren:()=>import('./posts/post.module').then((m)=>m.PostModule)
   }
 ];
 

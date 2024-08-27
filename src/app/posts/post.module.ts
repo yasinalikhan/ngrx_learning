@@ -5,6 +5,9 @@ import { PostListComponent } from "./post-list/post-list.component";
 import { AddpostComponent } from "./addpost/addpost.component";
 import { EditPostComponent } from "./edit-post/edit-post.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { StoreModule } from "@ngrx/store";
+import { appReducer } from "../store/app.store";
+import { postsReducer } from "./state/post.reducer";
 
 
 
@@ -24,6 +27,6 @@ const routes:Routes = [{
         AddpostComponent,
         EditPostComponent
     ],
-    imports:[CommonModule,RouterModule.forChild(routes),FormsModule,ReactiveFormsModule]
+    imports:[CommonModule,RouterModule.forChild(routes),FormsModule,ReactiveFormsModule,StoreModule.forFeature('posts',postsReducer)]
 })
 export class PostModule{}

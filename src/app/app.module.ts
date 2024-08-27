@@ -27,7 +27,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     AppRoutingModule,
     ReactiveFormsModule,
     DragDropModule,
-    StoreModule.forRoot(appReducer),
+    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
      // Instrumentation must be imported after importing StoreModule (config is optional)
      StoreDevtoolsModule.instrument({

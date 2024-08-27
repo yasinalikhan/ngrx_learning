@@ -7,20 +7,20 @@
                 <label for="">Title</label>
                 <input type="text" class="form-control" formControlName="title">
 
-            <div *ngIf="postForm.get('title')?.touched && !postForm.get('title')?.valid">
-                <div *ngIf="postForm.get('title')?.errors?.['required']">
-                    Title is Requird 
-                </div>
-                <div *ngIf="postForm.get('title')?.errors?.['minlength']">
-                   Title should be minimum 6 charector
-                </div>
+                <div *ngIf="postForm.get('title')?.touched && !postForm.get('title')?.valid">
+                    <div *ngIf="postForm.get('title')?.errors?.['required']" class="text-danger">
+                        Title is Requird
+                    </div>
+                    <div *ngIf="postForm.get('title')?.errors?.['minlength']" class="text-danger">
+                        Title should be minimum 6 charector
+                    </div>
 
                 </div>
             </div>
             <div class="mb-3">
                 <label for="">Description</label>
                 <textarea class="form-control" formControlName="description"></textarea>
-                <div>{{showDescriptionErrors()}}</div>
+                <div class="text-danger">{{showDescriptionErrors()}}</div>
             </div>
             <div class="my-3">
                 <button class="btn btn-primary" [disabled]="!postForm.valid">Save Post</button>

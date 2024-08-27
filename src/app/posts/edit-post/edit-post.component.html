@@ -2,14 +2,34 @@
     <div class="col-md-12">
         <h3>Update Post</h3>
         <hr>
-        <form  [formGroup]="editPostFrom">
+        <form  [formGroup]="editPostFrom" (ngSubmit)="onPostUpdate()">
             <div class="mb-3">
                 <label for="">Title</label>
                 <input type="text" class="form-control" formControlName="title">
+               
+                <div *ngIf="editPostFrom.get('title')?.touched && !editPostFrom.get('title')?.valid">
+                    <div *ngIf="editPostFrom.get('title')?.errors?.['required']">
+                        Title is Requird 
+                    </div>
+                    <div *ngIf="editPostFrom.get('title')?.errors?.['minlength']">
+                       Title should be minimum 6 charector
+                    </div>
+    
+                
                 </div>
             <div class="mb-3">
                 <label for="">Description</label>
                 <textarea class="form-control" formControlName="description"></textarea>
+            </div>
+            <div *ngIf="editPostFrom.get('description')?.touched && !editPostFrom.get('description')?.valid">
+                <div *ngIf="editPostFrom.get('description')?.errors?.['required']">
+                    Title is Requird 
+                </div>
+                <div *ngIf="editPostFrom.get('description')?.errors?.['minlength']">
+                   Title should be minimum 10 charector
+                </div>
+
+                </div>
             </div>
             <div class="my-3">
                 <button class="btn btn-primary" >Update Post</button>

@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.store';
 import { getPostById } from '../state/post.selector';
 import { Post } from 'src/app/models/posts.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { updatePost } from '../state/post.action';
 
 @Component({
   selector: 'app-edit-post',
@@ -18,7 +19,7 @@ export class EditPostComponent implements OnInit, OnDestroy {
   editPostFrom!:FormGroup;
   postSubscription!:Subscription;
 
-  constructor(private route:ActivatedRoute,private store:Store<AppState>) { }
+  constructor(private route:ActivatedRoute,private store:Store<AppState>,private router:Router) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params)=>{
@@ -41,6 +42,24 @@ export class EditPostComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
       this.postSubscription.unsubscribe();
+  }
+
+  onPostUpdate(){
+    if (!this.editPostFrom.valid) {
+      return;
+    }
+
+    const title = this.editPostFrom.value.title;
+    const description = this.editPostFrom.value.description;
+
+      const post:Post = {
+        id:this.post.id,
+        title,
+        description
+      };
+
+      this.store.dispatch(updatePost({post}));
+      this.router.navigate(['posts']);
   }
 
 }

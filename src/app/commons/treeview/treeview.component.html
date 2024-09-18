@@ -1,0 +1,23 @@
+<!-- src/app/treeview/treeview.component.html -->
+<!-- src/app/treeview/treeview.component.html -->
+<!-- src/app/treeview/treeview.component.html -->
+<!-- src/app/treeview/treeview.component.html -->
+<!-- src/app/treeview/treeview.component.html -->
+<ul cdkDropList (cdkDropListDropped)="drop($event)">
+    <li
+      *ngFor="let node of treeData; let i = index"
+      [class.expanded]="expanded[i]"
+      cdkDrag
+      [cdkDragData]="{ node: node, index: i }"
+    >
+      <span (click)="toggle(i)">{{ node.name }}</span>
+      <app-treeview
+        *ngIf="node.children && expanded[i]"
+        [treeData]="node.children"
+      ></app-treeview>
+    </li>
+  </ul>
+  
+  
+  
+  

@@ -1,0 +1,36 @@
+/* src/app/treeview/treeview.component.css */
+ul {
+    list-style-type: none;
+    padding-left: 20px;
+  }
+  
+  li {
+    cursor: pointer;
+  }
+  
+  li::before {
+    content: '▶';
+    margin-right: 6px;
+  }
+  
+  li.expanded::before {
+    content: '▼';
+  }
+
+  /* src/app/treeview/treeview.component.css */
+.cdk-drag-preview {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    padding: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cdk-drag-placeholder {
+    opacity: 0.5;
+  }
+  
+  .cdk-drag-handle {
+    cursor: move;
+  }
+  
+  

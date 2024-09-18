@@ -1,0 +1,14 @@
+<div class="" style="position: relative;">
+ <div>
+  <canvas #canvas></canvas>
+
+ </div>
+  <div *ngIf="tooltip.display" [style.left.px]="tooltip.x + 10" [style.top.px]="tooltip.y + 10" class="tooltip">
+    <!-- {{ tooltip.text }} -->
+    <ul>
+      <li *ngFor="let item of keyValuePair">
+        {{ item.name }}: {{ item.value }}
+      </li>
+    </ul>
+  </div>
+</div>

@@ -12,6 +12,8 @@ import { environment } from 'src/environments/environment';
 import { appReducer } from './store/app.store';
 import { TreeviewComponent } from './commons/treeview/treeview.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    HttpClientModule,
     DragDropModule,
+    EffectsModule.forRoot([]),
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
      // Instrumentation must be imported after importing StoreModule (config is optional)

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/app.store';
 import { loginStart } from '../state/auth.action';
+import { setLoadingSpinner } from 'src/app/store/shared/shared.action';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
     // console.log(this.loginFrom.value);
     const email = this.loginFrom.value.email;
     const password = this.loginFrom.value.password;
+    this.store.dispatch(setLoadingSpinner({status:true}))
     this.store.dispatch(loginStart({email,password}))
   }
 

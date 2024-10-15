@@ -14,6 +14,7 @@ import { TreeviewComponent } from './commons/treeview/treeview.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { LoadingSpinnerComponent } from './shared/components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     HeaderComponent,
     TreeviewComponent,
+    LoadingSpinnerComponent,
    
   ],
   imports: [
@@ -31,7 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     DragDropModule,
     EffectsModule.forRoot([]),
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
      // Instrumentation must be imported after importing StoreModule (config is optional)
      StoreDevtoolsModule.instrument({

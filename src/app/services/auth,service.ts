@@ -6,6 +6,7 @@ import { Observable } from "rxjs";
 import { User } from "../models/user.model";
 import { Store } from "@ngrx/store";
 import { AppState } from "../store/app.store";
+import { autoLogout } from "../auth/state/auth.action";
 
 @Injectable({
     providedIn:'root'
@@ -62,6 +63,7 @@ export class AuthService {
 
     this.timeoutInterval = setTimeout(() => {
       //logout functionality or get the refresh token
+      this.store.dispatch(autoLogout());
     }, timeInterval);
   }
 
@@ -80,5 +82,13 @@ export class AuthService {
       return user;
     }
     return null;
+  }
+
+  logout() {
+    localStorage.removeItem('userData');
+    if (this.timeoutInterval) {
+      clearTimeout(this.timeoutInterval);
+      this.timeoutInterval = null;
+    }
   }
 }

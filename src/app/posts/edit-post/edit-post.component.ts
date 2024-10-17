@@ -40,8 +40,11 @@ export class EditPostComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
+  
+  ngOnDestroy() {
+    if (this.postSubscription) {
       this.postSubscription.unsubscribe();
+    }
   }
 
   onPostUpdate(){

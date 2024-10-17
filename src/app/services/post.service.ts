@@ -22,4 +22,11 @@ export class PostsService {
         })
       );
   }
+
+  addPost(post: Post): Observable<{ name: string }> {
+    return this.http.post<{ name: string }>(
+      `https://myapp-1f07c-default-rtdb.firebaseio.com/posts.json`,
+      post
+    );
+  }
 }

@@ -14,14 +14,11 @@ import { PostsService } from 'src/app/services/post.service';
 })
 export class PostListComponent implements OnInit {
  posts$!: Observable<Post[] | null>;
-  constructor(private store: Store<AppState>,private postsService: PostsService) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
     this.posts$ = this.store.select(getPosts);
     this.store.dispatch(loadPosts());
-    this.postsService.getPosts().subscribe((data)=>{
-      console.log(data);
-    })
   }
 
   deletePost(id:any){

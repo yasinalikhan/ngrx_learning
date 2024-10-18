@@ -20,7 +20,7 @@
                     <td>{{item.title}}</td>
                     <td>{{item.description}}</td>
                     <td>
-                        <a href="" class="btn btn-primary" [routerLink]="['edit',item.id]" >Update</a>&nbsp;
+                        <a href="" class="btn btn-primary" [routerLink]="['edit',item.id]" >Update</a>&nbsp;<a href="" class="btn btn-primary" [routerLink]="['details',item.id]" >Details</a>&nbsp;
                         <a  class="btn btn-danger" (click)="deletePost(item.id)">Delete</a>
                     </td>
                 </tr>

@@ -10,6 +10,7 @@ import { appReducer } from '../store/app.store';
 import { postsReducer } from './state/post.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { PostsEffects } from './state/post.effects';
+import { SinglePostComponent } from './single-post/single-post.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [PostListComponent, AddpostComponent, EditPostComponent],
+  declarations: [PostListComponent, AddpostComponent, EditPostComponent, SinglePostComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
